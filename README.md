@@ -1,7 +1,7 @@
 # Stock_Management_System
 
 # This is a demo of stock management system built using Django and Postgresql for the back-end, and only HTML5 for the front-end 
-# programmings.
+  programmings.
 
 # The main features of this project are:
   - it has user/admin account management functionalities such as login/out, creating a new user account using the admin interface changing 
