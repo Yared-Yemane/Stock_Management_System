@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    {% for message in messages %}
+        {{message}}<br>
+    {% endfor %} 
+    
+</head>
+<body>
+    <a href="">Home</a> 
+
+    {% if request.user.is_authenticated %}
+
+    <select name="auth" id="" onchange="location=this.value">
+        <option selected disabled hidden>Accounts</option>
+        <option value="/auth/logout">Logout</option>
+        <option value="/auth/login/change_pw">Change password</option>
+    </select>
+
+    <select name="services" id="" onchange="location=this.value">
+            <option selected disabled hidden>Services</option>
+            <option value="services/request_item" >Request item</option>
+
+            {% if catagory == "system_admin" %}
+                <option value="services/add_user">Add user</option>
+            {% endif %}
+
+            {% if catagory == "general_manager" or catagory == "director" %}
+                <option value="services/process_request">Process request</option>
+            {% endif %}
+
+            {% if catagory == "officer" or catagory == "system_admin" %}
+                <option value="database/update_data">Update data</option>
+            <!--<option value="services/add_items">Add items</option> -->
+            {% endif %}
+
+            {% if catagory == "officer" or catagory == "director" or catagory == "general_manager" %}
+                <option value="services/get_report">Get report</option>
+            {% endif %}
+
+    </select>
+
+    {% else %}
+
+        <a href="auth/login">Login</a>
+
+    {% endif %}
+
+    <a href="about">About</a>
+    <a href="contact">Contact us</a>
+
+    {% if request.user.is_authenticated %}
+
+        <a href="services/notifications">Notifications</a><br><br>
+        Welcome, {{request.user.first_name}}
+
+        {% if length != 0 %}
+            <h4>You have the following notifications:</h4>
+
+                {% for your_notification in your_notifications %}
+                    - {{your_notification}}<a href="/services/request_item/retry/{{your_notification.cus_id}}/">retry</a> 
+                      <a href="services/notifications/del_notf/{{your_notification.cus_id}}/">delete</a><br><br>
+                {% endfor %}
+
+        {% else %}
+            <h4>No new updates</h4>
+        {% endif %}
+
+    {% endif %}
+
+</body>
+</html>

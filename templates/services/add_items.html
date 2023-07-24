@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add items</title>    
+    <a href="/">Home</a>
+
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    
+</head>
+<body>
+    <form action="/services/add_items" method="POST">
+        {% csrf_token %}
+        <input type="text" name="item_name" required>     : Item name  <br>
+        <input type="number" name="item_amount" required> : Amount <br><br>
+        <input type="Submit" value="Save"> <input type="Submit" value="Reset"> <input type="Submit" value="Cancel">
+    </form>
+
+</body>
+</html>

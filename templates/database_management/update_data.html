@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update data</title>
+    <a href="/">Home</a>
+    <h4>Update data page</h4>
+    
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    
+</head>
+<body>
+    <form action="/database/update_data" method="POST" name="update_data_form">
+        {% csrf_token %}
+        <table>
+            <tr id="1">
+                <td id="1">
+                    <input list="items" placeholder="item name . . ." name="form_item_name">
+                    <datalist id="items">
+                        {% for item in items %}
+                                <option value= {{ item.item_name }}>
+                        {% endfor %}
+                    </datalist>
+                    
+                </td>
+                <td id="2"><input type="number" placeholder="amount . . ." name="form_item_amount"></td>
+                <td><a href="/add_row">Add</a></td>
+                <td><a href="/delete">Undo</a></td>
+            </tr>
+    
+            <tr id="2">
+                <td id="1">
+                    <input list="items" placeholder="item name . . ." name="form_item_name">
+                    <datalist id="items">
+                        {% for item in items %}
+                                <option value= {{ item.item_name }}>
+                        {% endfor %}
+                    </datalist>
+                    
+                </td>
+                <td id="2"><input type="number" placeholder="amount . . ." name="form_item_amount"></td>
+            </tr>
+    
+            <tr id="3">
+                <td id="1">
+                    <input list="items" placeholder="item name . . ." name="form_item_name">
+                    <datalist id="items">
+                        {% for item in items %}
+                                <option value= {{ item.item_name }}>
+                        {% endfor %}
+                    </datalist>
+                    
+                </td>
+                <td id="2"><input type="number" placeholder="amount . . ." name="form_item_amount"></td>
+            </tr>
+    
+            <tr id="4">
+                <td id="1">
+                    <input list="items" placeholder="item name . . ." name="form_item_name">
+                    <datalist id="items">
+                        {% for item in items %}
+                                <option value= {{ item.item_name }}>
+                        {% endfor %}
+                    </datalist>
+                    
+                </td>
+                <td id="2"><input type="number" placeholder="amount . . ." name="form_item_amount"></td>
+            </tr>
+    
+            <tr id="5">
+                <td id="1">
+                    <input list="items" placeholder="item name . . ." name="form_item_name">
+                    <datalist id="items">
+                        {% for item in items %}
+                                <option value= {{ item.item_name }}>
+                        {% endfor %}
+                    </datalist>
+                    
+                </td>
+                <td id="2"><input type="number" placeholder="amount . . ." name="form_item_amount"></td>
+            </tr>
+
+            <tr id="6">
+                <td id="1">
+                    <input list="items" placeholder="item name . . ." name="form_item_name">
+                    <datalist id="items">
+                        {% for item in items %}
+                                <option value= {{ item.item_name }}>
+                        {% endfor %}
+                    </datalist>
+                    
+                </td>
+                <td id="2"><input type="number" placeholder="amount . . ." name="form_item_amount"></td>
+            </tr>
+        </table>
+        <input type="Submit" value="Update" name="update"> <input type="Submit" value="Reset" name="reset">
+    </form>
+
+
+    
+</body>
+</html>

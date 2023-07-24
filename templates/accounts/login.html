@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <a href="/">Home</a>
+
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+
+</head>
+<body>
+    <h3>Login Page</h3>
+    <form action="/auth/login" method="POST">
+        {% csrf_token %}
+         <input type="text" placeholder="enter username . . ." name="username"> Username<br><br>
+
+         <input type="password" placeholder="enter password ..." name="password"> Password<br><br>
+                  <input type="Submit" value="Login"> <a href="auth/recover_pw">forgot password?</a>
+
+    </form>
+</body>
+</html>

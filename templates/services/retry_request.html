@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF  -8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retry request</title>
+    <h4>Request item page</h4>
+
+    <a href="/">Home</a>
+    
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    
+</head>
+<body>
+
+    
+    <form action="/request_item/retry/{{item_request_id}}/" method="post">
+
+        {% csrf_token %}
+
+            <select name="item_name">
+                <option value="{{curr_item_name}}" selected hidden>{{curr_item_name}}</option>
+                {% for item in items %}
+                    <option value= {{ item.item_name }}>{{ item.item_name }}</option>
+                {% endfor %}
+            </select> <br>
+
+            <input type="text" required placeholder="...................." name="item_amount" value={{item_amount}}> :Item amount <br>
+            <input type="text" required placeholder="...................." name="user_duty" value={{duty}}> :Your duty <br>
+            <input type="text" required placeholder="...................." name="receiver" value={{director}}> :Send to <br>
+            <input type="text" placeholder="description . . ." name="description" value={{description}}> :Description <br>
+
+            <input type="submit" value="Retry" name="retry"> <input type="submit" value="Cancel" name="cancel">
+
+
+    </form>
+
+    <h4>Note: </h4> Make some changes to retry  
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request item</title>
+    <h4>Request item page</h4>
+
+    <a href="/">Home</a>
+    
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    
+</head>
+<body>
+    
+    <form action="/services/request_item" method="post">
+        {% csrf_token %}
+
+        <select name="item_name" id="">
+            <option value="" selected hidden disabled>Item name</option>
+            {% for item in items %}
+                <option value= {{ item.item_name }}>{{ item.item_name }}</option>
+            {% endfor %}
+        </select> <br>
+
+        <input type="text" required placeholder="...................." name="item_amount" value=""> :Item amount <br>
+        <input type="text" required placeholder="...................." name="user_duty"> :Your duty <br>
+        <input type="text" required placeholder="...................." name="receiver"> :Send to <br>
+        <input type="text" placeholder="description . . ." name="description"> :Description <br>
+
+        <input type="Submit" value="Request"> <input type="Submit" value="Cancel">
+    </form>
+</body>
+</html>

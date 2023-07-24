@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add user</title>
+    <a href="/">Home</a><br>
+    <h4>Add user page</h4>
+
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+
+</head>
+<body>
+
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+
+
+    <form action="/services/add_user" method="post">
+        {% csrf_token %}
+
+        First-name: <input type="text" name="first_name" required><br>
+        Last -name: <input type="text" name="last_name" required><br>
+          Username:   <input type="text" name="username" required><br>
+            E-mail:    <input type="email" name="email"><br>
+          Password: <input type="password" name="password1" required><br>
+  Confirm password: <input type="password" name="password2" required><br><br>
+
+        <select name="department" id="department" required>
+            <option value="" disabled selected>Department</option><br>
+            <option value="IT">IT</option><br>
+            <option value="mangement">Management</option><br>
+            <option value="inventory">Inventory</option><br>
+            <option value="finance">Finance</option><br>
+            <option value="human_resources">Human resources</option><br>
+            <option value="security">Security</option><br>
+        </select>
+        
+        <select name="catagory" required>
+            <option value="" disabled selected>Catagory</option><br>
+            <option value="system_admin">System admin</option><br>
+            <option value="general_manager">General manager</option><br>
+            <option value="director">Director</option><br>
+            <option value="officer">Officer</option><br>
+            <option value="end_user">End user</option><br>
+        </select><br><br>
+
+        <input type="checkbox" name="is_staff">is staff 
+        <input type="checkbox" name="is_active">is active  
+        <input type="checkbox" name="is_superuser">is superuser <br><br>
+
+        <input type="Submit" value="Add"> <input type="Submit" value="Cancel">
+
+    </form>
+
+</body>
+</html>

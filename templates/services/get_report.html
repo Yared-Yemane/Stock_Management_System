@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <a href="/">Home</a>
+</head>
+<body>
+    <form action="services/report" method="post">
+        <select name="report_type" id="">
+            <option value="" selected hidden disabled>Report type</option>
+            {% for report_type in report_types %}
+                <option value= {{ report_type }}>{{ report_type }}</option>
+            {% endfor %}
+        </select> <br>
+    </form>
+</body>
+</html>

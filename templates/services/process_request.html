@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process request</title>
+    <a href="/">Home</a>
+    <h4>Process request page</h4>
+
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}<br><br>
+    
+
+</head>
+<body>
+    Details: <br>
+            <form action="/services/process_request/{{request_obj.cus_id}}/" method="post">
+                {% csrf_token %}
+
+                 Requesting individual: {{request_obj.first_name}} {{request_obj.last_name}} <br>
+                            Department: {{ request_obj.user_department}} <br>
+                                  Duty: {{request_obj.user_duty}} <br>
+                          Request name: {{request_obj.item_name}} <br>
+                        Request amount: {{request_obj.item_amount}} <br>
+               Request intitialized at: {{request_obj.request_datetime}} <br>
+
+               {% if request.user.catagory == 'director' %}
+
+                <button type="submit" name="proceed" value=1>&nbsp;Proceed</button>
+                <button type="submit" name="reject" value=1>&nbsp;Reject</button>
+
+               {% elif request.user.catagory == 'officer' %}
+
+                {% if not request_obj.notified %}
+                    <button type="submit" name="notify" value=1>&nbsp;Notify user</button>
+
+                {% else %}
+                    <button type="submit" name="proceed" value=1>&nbsp;Proceed</button>
+
+                {% endif %}
+
+               {% else %}
+
+                {% if request_obj.approval == 'rejected' %}
+
+                    <button type="submit" name="edit" value=1>&nbsp;Edit</button>
+                    
+                {% endif %}
+
+               {% endif %}
+               <button type="submit" name="back" value=1>&nbsp;Back</button>
+
+
+            </form>
+
+</html>
